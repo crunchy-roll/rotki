@@ -1,6 +1,7 @@
 import logging
 from collections import defaultdict
 from importlib import import_module
+from itertools import chain
 from types import ModuleType
 from typing import TYPE_CHECKING, Any, Iterator, Optional
 
@@ -53,15 +54,19 @@ class ExchangeManager():
 
         return None
 
-    def iterate_exchanges(self) -> Iterator[ExchangeInterface]:
-        """Iterate all connected exchanges"""
+    def iterate_exchanges(
+            self,
+            location: Optional[Location] = None,
+    ) -> Iterator[ExchangeInterface]:
+        """Iterate all connected exchanges, optionally filtering by location if provided"""
         with self.database.conn.read_ctx() as cursor:
             excluded = self.database.get_settings(cursor).non_syncing_exchanges
-        for _, exchanges in self.connected_exchanges.items():
-            for exchange in exchanges:
-                # We are not yielding excluded exchanges
-                if exchange.location_id() not in excluded:
-                    yield exchange
+        exchanges = self.connected_exchanges.get(location, []) if location \
+            else chain(*self.connected_exchanges.values())
+        for exchange in exchanges:
+            # We are not yielding excluded exchanges
+            if exchange.location_id() not in excluded:
+                yield exchange
 
     def edit_exchange(
             self,

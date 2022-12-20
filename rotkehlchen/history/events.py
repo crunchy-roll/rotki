@@ -178,11 +178,7 @@ class EventsHistorian:
         if location not in SUPPORTED_EXCHANGES:
             return  # nothing to do
 
-        exchanges_list = self.exchange_manager.connected_exchanges.get(location)
-        if exchanges_list is None:
-            return
-
-        for exchange in exchanges_list:
+        for exchange in self.exchange_manager.iterate_exchanges(location):
             exchange.query_trade_history(
                 start_ts=from_ts,
                 end_ts=to_ts,
