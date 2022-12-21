@@ -112,12 +112,11 @@ const autoCompleteHint: ComputedRef<string> = computed(() => {
 
 <template>
   <div>
+    <div v-if="slots.title" class="text-h6 pb-4">
+      <slot name="title" />
+    </div>
     <v-sheet outlined rounded>
       <div class="pb-0" :class="slots.title ? 'pa-4' : 'pa-0'">
-        <div v-if="slots.title" class="text-h6 pb-4">
-          <slot name="title" />
-        </div>
-
         <v-row v-if="!disableAdd" no-gutters>
           <v-col class="pr-4">
             <v-autocomplete
