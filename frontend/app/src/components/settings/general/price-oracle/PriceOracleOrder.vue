@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import PrioritizedList from '@/components/helper/PrioritizedList.vue';
 import SettingsOption from '@/components/settings/controls/SettingsOption.vue';
-import SettingCategory from '@/components/settings/SettingCategory.vue';
 import { useGeneralSettingsStore } from '@/store/settings/general';
 import {
   PrioritizedListData,
@@ -72,14 +71,7 @@ const { t } = useI18n();
 </script>
 
 <template>
-  <setting-category>
-    <template #title>
-      {{ t('price_oracle_settings.title') }}
-    </template>
-    <template #subtitle>
-      {{ t('price_oracle_settings.subtitle') }}
-    </template>
-
+  <div>
     <v-row>
       <v-col cols="12" md="6">
         <settings-option
@@ -126,5 +118,5 @@ const { t } = useI18n();
         {{ t('price_oracle_selection.hint') }}
       </v-col>
     </v-row>
-  </setting-category>
+  </div>
 </template>

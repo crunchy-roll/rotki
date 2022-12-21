@@ -18,7 +18,7 @@ import RpcSettings from '@/components/settings/general/rpc/RpcSettings.vue';
 import TreatEthAsEth2Setting from '@/components/settings/general/TreatEthAsEth2Setting.vue';
 import UsageAnalyticsSetting from '@/components/settings/general/UsageAnalyticsSetting.vue';
 import VersionUpdateFrequencySetting from '@/components/settings/general/VersionUpdateFrequencySetting.vue';
-import PriceOracleSettings from '@/components/settings/PriceOracleSettings.vue';
+import PriceOracleSettings from '@/components/settings/general/price-oracle/PriceOracleSettings.vue';
 import SettingCategory from '@/components/settings/SettingCategory.vue';
 import { bigNumberify } from '@/utils/bignumbers';
 
