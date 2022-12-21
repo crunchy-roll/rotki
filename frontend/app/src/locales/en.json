@@ -3355,7 +3355,7 @@
     "data_name": "price oracle",
     "historic_prices": "Historic Prices",
     "latest_prices": "Latest Prices",
-    "subtitle": "Manage which price oracles are used, in which order.",
+    "subtitle": "Manage price oracle priority order and penalty parameters.",
     "title": "Price oracle settings"
   },
   "price_refresh": {
